@@ -2,9 +2,12 @@
 Serverless App Development with AWS
 ________________________________________
 EXERCISE 1 – Build a CRUD API with Lambda and DynamoDB
+
 Introduction
+
 AWS Lambda is a serverless compute service that allows you to run code without provisioning or managing servers. It executes your code only when triggered, scaling automatically from a few requests per day to thousands per second. You are charged only for the compute time used—there’s no cost when the code isn’t running.
 Lambda enables you to build backend services or applications without any administrative overhead. It operates on a high-availability compute infrastructure, handling tasks like server maintenance, operating system updates, capacity provisioning, scaling, monitoring, and logging. All you need is to supply your code in a supported language.
+
 Key Features:
 •	Event-driven execution: Trigger Lambda functions using events like data changes in Amazon S3 or DynamoDB, HTTP requests via API Gateway, or custom API calls using AWS SDKs.
 •	Integration: Build workflows for AWS services, process streaming data from Amazon Kinesis, or create backend services with AWS-level performance, scalability, and security.
