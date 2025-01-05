@@ -105,6 +105,7 @@ ________________________________________
  
 
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+
 import pkg from "@aws-sdk/lib-dynamodb";
 
 const { PutCommand, DeleteCommand, GetCommand, ScanCommand } = pkg;
@@ -164,12 +165,14 @@ export const handler = async (event) => {
     body = err.message;
   }
 
+
   return {
     statusCode,
     body: JSON.stringify(body),
     headers,
   };
 };
+
 ________________________________________
 
 Step 3: Create an HTTP API
@@ -193,14 +196,17 @@ ________________________________________
 Your HTTP API is now created and ready for route configuration.
 ________________________________________
 Step 4: Create Routes
+
 Routes define how incoming HTTP requests are processed and forwarded to backend resources. In this step, you’ll create routes for CRUD operations using specific HTTP methods and resource paths.
 Routes to Create:
+
 •	GET /items/{id}: Retrieve an item by ID.
 •	GET /items: Retrieve all items.
 •	PUT /items: Add or update an item.
 •	DELETE /items/{id}: Delete an item by ID.
 ________________________________________
 Steps to Create Routes:
+
 1.	Access Your API:
 o	In the API Gateway console, select your API (e.g., http-crud-tutorial-api).
 2.	Open Routes:
@@ -270,13 +276,17 @@ Testing your API ensures that the routes, integrations, and backend functionalit
 ________________________________________
 Step 7.1: Retrieve Your API’s Invoke URL
 1.	Log in to API Gateway Console:
+   
 o	Go to https://console.aws.amazon.com/apigateway.
-2.	Select Your API:
+
+3.	Select Your API:
 o	From the list of APIs, choose your API (e.g., http-crud-tutorial-api).
-3.	Locate the Invoke URL:
+
+5.	Locate the Invoke URL:
 o	On the Details page, look for the Invoke URL under the API Overview section.
+
 Example: https://abcdef123.execute-api.us-west-2.amazonaws.com.
-4.	Copy the Invoke URL:
+7.	Copy the Invoke URL:
 o	Save the URL for use in subsequent curl commands.
 ________________________________________
 Step 7.2: Create or Update an Item
@@ -316,20 +326,25 @@ Step-by-Step Guide for Completing the Lab
 ________________________________________
 Step 7.3: Additional API Commands
 Use the following commands to test other HTTP methods for your API.
+
 Get All Items
 To list all items in the DynamoDB table:
 curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items
+
 Get a Specific Item
 To retrieve an item by its id:
 curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items/abcdef234
+
 Delete an Item
 To delete an item by its id:
 curl -v -X "DELETE" https://abcdef123.execute-api.us-west-2.amazonaws.com/items/abcdef234
+
 Verify Deletion
 To ensure the item is deleted, list all items again:
 curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items
 ________________________________________
 Step 8: Clean Up Resources
+
 Delete the DynamoDB Table
 1.	Open the DynamoDB console: AWS DynamoDB Console.
 2.	Select your table (http-crud-tutorial-items).
