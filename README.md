@@ -290,16 +290,19 @@ Example: https://abcdef123.execute-api.us-west-2.amazonaws.com.
 o	Save the URL for use in subsequent curl commands.
 ________________________________________
 Step 7.2: Create or Update an Item
+
 To test the PUT /items route, use the following command:
+
 curl -v -X "PUT" -H "Content-Type: application/json" \
 -d "{\"id\": \"abcdef234\", \"price\": 12345, \"name\": \"myitem\"}" \
+
 https://abcdef123.execute-api.us-west-2.amazonaws.com/items
 •	Command Breakdown: 
-o	-v: Enables verbose output for debugging.
-o	-X "PUT": Specifies the HTTP method (PUT).
-o	-H "Content-Type: application/json": Sets the request header to indicate JSON data.
-o	-d "{\"id\": \"abcdef234\", \"price\": 12345, \"name\": \"myitem\"}": Specifies the JSON body containing item details.
-o	Replace https://abcdef123.execute-api.us-west-2.amazonaws.com/items with your API’s Invoke URL + /items.
+o		-v: Enables verbose output for debugging.
+o		-X "PUT": Specifies the HTTP method (PUT).
+o		-H "Content-Type: application/json": Sets the request header to indicate JSON data.
+o		-d "{\"id\": \"abcdef234\", \"price\": 12345, \"name\": \"myitem\"}": Specifies the JSON body containing item details.
+o		Replace https://abcdef123.execute-api.us-west-2.amazonaws.com/items with your API’s Invoke URL + /items.
 ________________________________________
 Expected Output:
 •	HTTP Response Code: 
@@ -315,11 +318,13 @@ Example:
 ________________________________________
 Next Steps:
 1.	Test Other Routes:
-o	Use similar curl commands for the other routes (GET, DELETE) to validate the complete API functionality.
-2.	Monitor Logs:
-o	Use AWS CloudWatch to inspect Lambda execution logs for troubleshooting if any issues arise.
-3.	Iterate and Improve:
-o	Based on the test results, make necessary adjustments to your Lambda function or API Gateway configurations.
+o		Use similar curl commands for the other routes (GET, DELETE) to validate the complete API functionality.
+  
+3.	Monitor Logs:
+o		Use AWS CloudWatch to inspect Lambda execution logs for troubleshooting if any issues arise.
+  
+5.	Iterate and Improve:
+o		Based on the test results, make necessary adjustments to your Lambda function or API Gateway configurations.
 
  
 Step-by-Step Guide for Completing the Lab
@@ -328,20 +333,22 @@ Step 7.3: Additional API Commands
 Use the following commands to test other HTTP methods for your API.
 
 Get All Items
-To list all items in the DynamoDB table:
-curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items
+	To list all items in the DynamoDB table:
+	curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items
+
 
 Get a Specific Item
-To retrieve an item by its id:
-curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items/abcdef234
+	To retrieve an item by its id:
+	curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items/abcdef234
 
 Delete an Item
-To delete an item by its id:
-curl -v -X "DELETE" https://abcdef123.execute-api.us-west-2.amazonaws.com/items/abcdef234
+	To delete an item by its id:
+	curl -v -X "DELETE" https://abcdef123.execute-api.us-west-2.amazonaws.com/items/abcdef234
+
 
 Verify Deletion
-To ensure the item is deleted, list all items again:
-curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items
+	To ensure the item is deleted, list all items again:
+	curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items
 ________________________________________
 Step 8: Clean Up Resources
 
