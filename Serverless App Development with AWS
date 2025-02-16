@@ -1,0 +1,89 @@
+# Serverless App Development with AWS
+
+## Overview
+This document provides an exercise on developing a serverless application using AWS services. The goal is to understand and implement an architecture without managing servers, utilizing AWS Lambda, API Gateway, DynamoDB, and S3.
+
+## Learning Objectives
+- Understand the fundamentals of serverless computing.
+- Learn how to deploy functions using AWS Lambda.
+- Integrate AWS API Gateway with Lambda.
+- Store data using AWS DynamoDB.
+- Host a frontend on AWS S3.
+
+---
+
+## **Exercise: Building a Serverless To-Do App**
+
+### **Step 1: Set Up AWS Lambda Function**
+1. Navigate to **AWS Lambda** in the AWS Console.
+2. Click **Create function** > Select **Author from Scratch**.
+3. Name your function: `ToDoLambdaFunction`.
+4. Choose runtime: **Python 3.x / Node.js 18.x**.
+5. Set up execution role with DynamoDB and CloudWatch permissions.
+6. Click **Create function**.
+7. Add the following code snippet:
+
+```python
+import json
+import boto3
+
+dynamodb = boto3.resource('dynamodb')
+table = dynamodb.Table('ToDoTable')
+
+def lambda_handler(event, context):
+    body = json.loads(event['body'])
+    table.put_item(Item={'id': body['id'], 'task': body['task']})
+    return {'statusCode': 200, 'body': json.dumps('Task added!')}
+```
+
+8. Click **Deploy**.
+
+---
+
+### **Step 2: Configure API Gateway**
+1. Navigate to **Amazon API Gateway**.
+2. Create a new **REST API**.
+3. Create a new resource `/tasks`.
+4. Create a `POST` method and integrate it with the **Lambda function**.
+5. Deploy the API and get the invoke URL.
+
+---
+
+### **Step 3: Set Up DynamoDB Table**
+1. Open **AWS DynamoDB**.
+2. Click **Create table**.
+3. Set table name: `ToDoTable`.
+4. Set primary key: `id (String)`.
+5. Create the table.
+
+---
+
+### **Step 4: Host the Frontend on S3**
+1. Navigate to **AWS S3**.
+2. Create a new **bucket**.
+3. Enable **public access**.
+4. Upload your HTML, CSS, and JavaScript files.
+5. Enable **Static website hosting**.
+6. Note down the **Bucket URL** and use it as the frontend endpoint.
+
+---
+
+## **Testing & Deployment**
+- Use **Postman** or `curl` to test the API Gateway endpoint.
+- Verify stored tasks in **DynamoDB**.
+- Access the frontend from the S3 bucket URL.
+
+---
+
+## **Conclusion**
+Congratulations! 🎉 You have successfully built and deployed a serverless To-Do application using AWS Lambda, API Gateway, DynamoDB, and S3.
+
+---
+
+## **Next Steps**
+- Implement authentication using **Amazon Cognito**.
+- Add frontend framework like **React**.
+- Implement WebSockets for real-time updates.
+- Optimize for cost and performance using **AWS Step Functions**.
+
+🚀 Happy Coding!
